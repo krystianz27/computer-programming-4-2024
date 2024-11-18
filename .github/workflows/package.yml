@@ -17,5 +17,12 @@ jobs:
         run: mvn package -DskipTests
       - name: list compiled files
         run: ls -la target/
+      - run: mv target/*.jar target/ecommerce.jar
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Package
+          path: target/ecommerce.jar
+
+
 
     
