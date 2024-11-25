@@ -18,11 +18,14 @@ jobs:
       - name: list compiled files
         run: ls -la target/
       - run: mv target/*.jar target/ecommerce.jar
-      - uses: actions/upload-artifact@v4
+      # Create the release
+      - uses: ncipollo/release-action@v1
         with:
-          name: Package
-          path: target/ecommerce.jar
-
+          artifacts: "target/*.jar"
+          name: My release
+          body: |
+            ## Release ${{ github.ref_name }}
+      
 
 
     
