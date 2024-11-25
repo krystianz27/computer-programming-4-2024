@@ -1,5 +1,8 @@
 name: Prepare package
-on: [push]
+on:
+  push:
+    tags:
+      - 'v*.*.*'
 jobs:
   Linter:
     runs-on: ubuntu-latest
