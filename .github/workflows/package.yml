@@ -17,7 +17,7 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - name: Run Maven package
-        run: mvn package -DskipTests
+        run: mvn -DskipTests package
       - name: list compiled files
         run: ls -la target/
       - run: mv target/*.jar target/ecommerce.jar
