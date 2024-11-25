@@ -1,8 +1,10 @@
 name: Prepare package
 on: [push]
 jobs:
-  PerformUnitTests:
+  buildPackage:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK 11 for x64
@@ -14,3 +16,9 @@ jobs:
       - name: Run the Maven package command
         run: mvn -DskipTests package
       - run: ls target/
+      - run: mv target/*.jar app.jar
+      - uses: ncipollo/release-action@v1
+        with:
+          name: My Release candidate
+          artifacts: "target/*.jar"
+          body: "my release of version: ${{github.ref}}"
