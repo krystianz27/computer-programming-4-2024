@@ -1,0 +1,7 @@
+name: Hello world Action
+on: [push]
+jobs:
+  StaticCodeAnalytics:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello world"
